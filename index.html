@@ -13,38 +13,82 @@
             background-size: cover;
             color: #333;
             padding: 50px;
+            margin: 0;
         }
         h1 {
             color: #ff6347;
             font-size: 3em;
-            animation: fadeIn 2s ease-in;
+            animation: fadeIn 2s ease-in, textSlide 5s infinite;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff6347, #ff4500);
+            -webkit-background-clip: text;
+            color: transparent;
         }
         p {
             font-size: 1.5em;
             background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
+            padding: 10px 20px;
             border-radius: 5px;
             display: inline-block;
-            animation: fadeIn 4s ease-in;
+            margin: 10px 0;
+            animation: fadeIn 4s ease-in, textSlide 5s infinite;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        @keyframes textSlide {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+        audio {
+            margin-top: 20px;
+        }
+        .audio-controls {
+            margin-top: 20px;
+        }
+        .audio-controls button {
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            margin: 0 10px;
+            color: #ff6347;
+        }
+        .audio-controls button:focus {
+            outline: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.2em;
+                padding: 8px 15px;
+            }
+        }
     </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Bonne fête Papa !</h1>
     <p>Joyeux anniversaire pour tes 44 ans !</p>
-    <p>Tu es né le 15 juillet 1980 et aujourd'hui nous célébrons ta vie.</p>
-    <p>Merci pour tout ce que tu fais pour nous.</p>
+    <p>Tu es né le 15 juillet et aujourd'hui nous célébrons ta vie.</p>
+    <p>Merci pour tout ce que tu as fais pour nous.</p>
     <p>Nous t'aimons beaucoup !</p>
 
     <!-- Ajouter de la musique d'anniversaire en boucle -->
-    <audio autoplay loop>
+    <audio id="birthdayAudio" autoplay loop>
         <source src="StalinaVertus_Bon_Anniversaire(48k).mp3" type="audio/mp3">
-        <!-- Si le navigateur ne supporte pas le format MP3 -->
-        Your browser does not support the audio element.
+        Votre navigateur ne supporte pas l'élément audio.
     </audio>
+    <div class="audio-controls">
+        <button onclick="document.getElementById('birthdayAudio').play()"><i class="fas fa-play"></i></button>
+        <button onclick="document.getElementById('birthdayAudio').pause()"><i class="fas fa-stop"></i></button>
+    </div>
 </body>
 </html>
